@@ -1,16 +1,18 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>我的信息</title>
-        <link rel="stylesheet" href="../../../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../../css/add.css">
+        <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>" >
+        <link rel="stylesheet" href="<c:url value="/css/add.css"/> ">
     </head>
+
     <body>
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/message/list.do">
+                    <a class="navbar-brand" href="<c:url value="/message/listall"/>">
                         返回留言板
                     </a>
                 </div>
@@ -24,7 +26,7 @@
             <div class="page-header">
                 <h3><small>个人信息</small></h3>
             </div>
-            <form class="form-horizontal" action="/editUserPrompt.do" method="post">
+            <form class="form-horizontal" action="" method="post">
                 <input type="hidden" id="id" name="id" value="${user.id}">
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">用户 ：</label>

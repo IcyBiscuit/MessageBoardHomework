@@ -1,12 +1,13 @@
 package com.imooc.beans;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
-public class Message {
+public class Message implements Serializable {
 
     /**
      * Message Bean
-     *
      */
     private long id;
 
@@ -19,6 +20,9 @@ public class Message {
     private String content;
 
     private Date createTime;
+
+    public Message() {
+    }
 
     public Message(long id, long userId, String username, String title, String content, Date createTime) {
         this.id = id;
@@ -34,6 +38,36 @@ public class Message {
         this.username = username;
         this.title = title;
         this.content = content;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", username='" + username + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", createTime=" + createTime +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Message message = (Message) o;
+        return id == message.id &&
+                userId == message.userId &&
+                Objects.equals(username, message.username) &&
+                Objects.equals(title, message.title) &&
+                Objects.equals(content, message.content) &&
+                Objects.equals(createTime, message.createTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userId, username, title, content, createTime);
     }
 
     public long getId() {

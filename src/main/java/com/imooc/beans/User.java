@@ -1,8 +1,10 @@
 package com.imooc.beans;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Date;
+import java.util.Objects;
 
-public class User {
+public class User implements Serializable {
     private long id;
 
     private String name;
@@ -16,6 +18,48 @@ public class User {
     private String phone;
 
     private String address;
+
+
+    public User() {
+    }
+
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+
+        return id == user.id &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(realName, user.realName) &&
+                Objects.equals(birthday, user.birthday) &&
+                Objects.equals(phone, user.phone) &&
+                Objects.equals(address, user.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, password, realName, birthday, phone, address);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", realName='" + realName + '\'' +
+                ", birthday=" + birthday +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 
     public long getId() {
         return id;

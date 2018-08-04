@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <html>
@@ -100,7 +99,7 @@
 
         <div id="pagefy">
             <ul>
-                <form id="messageForm" action="<c:url value="/message/listall"/>" method="post">
+                <form id="messageForm" action="<c:url value="/my/message"/>" method="post">
                     <input type="hidden" id="page" name="page" value="${page}">
                     <input type="hidden" id="last" name="last" value="${last}">
                     <li><a href="javascript:void(0)" onclick="submitMessageForm('first')">首页</a></li>

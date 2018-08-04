@@ -10,4 +10,9 @@ public interface MessageService {
     List<Message> listMessage(int page, int size);
 
     int countMessage();
+
+    int countMessage(Long id);
+
+
+    List<Message> listMessageById(Long userId, int page, int size);
 }

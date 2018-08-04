@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public final class DatabasesConnectionUtil {
 
-    private static final ComboPooledDataSource dataSource = new ComboPooledDataSource();
+    private static ComboPooledDataSource dataSource =new ComboPooledDataSource();
 
     public static Connection getConnection() throws SQLException {
         Connection connection = dataSource.getConnection();
