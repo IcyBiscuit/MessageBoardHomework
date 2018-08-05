@@ -45,7 +45,7 @@ public class UserMessageServlet extends HttpServlet {
             }
 
             MessageService messageService = new MessageServiceImpl();
-            List<Message> messages = messageService.listMessageById(user.getId(), page, pageSize);
+            List<Message> messages = messageService.listMessages(user.getId(), page, pageSize);
 
             int count = messageService.countMessage(user.getId());
             int last = count % pageSize == 0 ? (count / pageSize) : ((count / pageSize) + 1);
@@ -55,7 +55,8 @@ public class UserMessageServlet extends HttpServlet {
             request.setAttribute("last",last);
             request.getRequestDispatcher("/WEB-INF/views/biz/usermessage_list.jsp").forward(request, response);
         } else {
-            response.sendRedirect(request.getContextPath() + "/login");
+//            response.sendRedirect(request.getContextPath() + "/login");
+            return;
         }
     }
 }

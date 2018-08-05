@@ -26,7 +26,7 @@
             <div class="page-header">
                 <h3><small>个人信息</small></h3>
             </div>
-            <form class="form-horizontal" action="" method="post">
+            <form class="form-horizontal" action="<c:url value="/my/info/modify"/> " method="post">
                 <input type="hidden" id="id" name="id" value="${user.id}">
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">用户 ：</label>

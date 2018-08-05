@@ -5,8 +5,12 @@ import com.imooc.beans.User;
 public interface UserService {
     User login(String username, String password);
 
-    User getUserById(Long id);
+    User getUser(Long id);
+
+    User getUser(String name);
 
     boolean updateUser(User user);
+
+    boolean addUser(User user);
 
 }

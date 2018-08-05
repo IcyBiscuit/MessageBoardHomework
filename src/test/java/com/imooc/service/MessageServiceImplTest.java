@@ -16,13 +16,13 @@ class MessageServiceImplTest {
 
     @Test
     void addMeassage() {
-        boolean b = messageService.addMeassage(new Message());
+        boolean b = messageService.addMessage(new Message());
         assertEquals(Boolean.TRUE,b);
     }
 
     @Test
     void listMessage() {
-        List<Message> messages = messageService.listMessage(3, 5);
+        List<Message> messages = messageService.listMessages(3, 5);
         assertEquals(1,messages.size());
         assertNotNull(messages);
 
@@ -33,4 +33,6 @@ class MessageServiceImplTest {
         assertEquals(666,messageService.countMessage());
         assertEquals(666,messageService.countMessage(666L));
     }
+
+
 }

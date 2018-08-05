@@ -18,10 +18,17 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    public User getUserById(Long id) {
+    public User getUser(Long id) {
         User user = null;
-        user = userDAO.getUserById(id);
+        user = userDAO.getUser(id);
         return user;
+    }
+
+    @Override
+    public User getUser(String name) {
+        User user = userDAO.getUser(name);
+        return user;
+
     }
 
     public boolean updateUser(User user) {
@@ -32,6 +39,16 @@ public class UserServiceImpl implements UserService {
         else
             return false;
 
+    }
+
+    @Override
+    public boolean addUser(User user) {
+        int i = userDAO.addUser(user);
+        if (i != -1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

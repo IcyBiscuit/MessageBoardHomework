@@ -2,8 +2,6 @@ package com.imooc.service;
 
 import com.imooc.DAO.FakeUserDAOImpl;
 import com.imooc.beans.User;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import jdk.nashorn.internal.codegen.types.BooleanType;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,7 +22,7 @@ class UserServiceImplTest {
 
     @Test
     void getUserById() {
-        User userById = userService.getUserById(111L);
+        User userById = userService.getUser(111L);
         assertNotNull(userById);
     }
 

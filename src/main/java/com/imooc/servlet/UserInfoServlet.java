@@ -12,6 +12,8 @@ public class UserInfoServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/views/biz/user.jsp").forward(request, response);
+        if (request.getSession().getAttribute("user") != null) {
+            request.getRequestDispatcher("/WEB-INF/views/biz/user.jsp").forward(request, response);
+        }
     }
 }

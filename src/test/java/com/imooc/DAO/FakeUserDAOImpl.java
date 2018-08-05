@@ -9,7 +9,7 @@ public class FakeUserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User getUserById(Long id) {
+    public User getUser(Long id) {
 
         return new User();
     }
@@ -22,5 +22,10 @@ public class FakeUserDAOImpl implements UserDAO {
     @Override
     public int addUser(User user) {
         return 666;
+    }
+
+    @Override
+    public User getUser(String name) {
+        return null;
     }
 }

@@ -31,7 +31,7 @@ class UserDAOImplTest {
 
     @Test
     void getUserById() {
-        User user = userDAO.getUserById(10L);
+        User user = userDAO.getUser(10L);
         Assertions.assertNotNull(user);
         String[] target = {"UnitTester", "66666666"};
         String[] result = {user.getName(), user.getPassword()};
@@ -65,7 +65,7 @@ class UserDAOImplTest {
 
         int result = userDAO.updateUser(testUser);
         Assertions.assertNotEquals(-1,result);
-        Assertions.assertEquals(testUser,userDAO.getUserById(testUser.getId()));
+        Assertions.assertEquals(testUser,userDAO.getUser(testUser.getId()));
 
     }
 }

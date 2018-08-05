@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <html>
@@ -7,29 +6,7 @@
     <meta charset="UTF-8">
     <title>留言板</title>
     <link rel="stylesheet" href="<c:url value="/css/index.css"/>">
-
-    <script type="text/javascript">
-        function submitMessageForm(flag) {
-            if ('first' == flag) {
-                document.getElementById('page').value = 1;
-            } else if ('pre' == flag) {
-                var current = Number(document.getElementById('page').value);
-                if (current > 1) {
-                    document.getElementById('page').value = current - 1;
-                }
-            } else if ('next' == flag) {
-                var current = Number(document.getElementById('page').value);
-                var last = Number(document.getElementById('last').value);
-                if (current < last) {
-                    document.getElementById('page').value = current + 1;
-                }
-            } else if ('last' == flag) {
-                var last = Number(document.getElementById('last').value);
-                document.getElementById('page').value = last < 1 ? 1 : last;
-            }
-            document.getElementById('messageForm').submit();
-        }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -65,18 +42,28 @@
 </section>
 <section class="main">
     <div class="container">
-        <c:forEach items="${messages}" var="msg">
+        <c:forEach items="${messages}" var="message">
             <div class="alt-item">
                 <div class="alt-head">
                     <div class="alt-info">
-                        <span>作者：<a href="">${msg.username}</a></span>
-                        <span>时间：<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${msg.createTime}"/></span>
+                        <span>作者：<a href="">${message.username}</a></span>
+                        <span>时间：<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${message.createTime}"/></span>
                     </div>
                 </div>
                 <div class="alt-content">
-                    <h3>${msg.title}</h3>
-                    <p>${msg.content}</p>
+                    <h3>${message.title}</h3>
+                    <p>${message.content}</p>
                 </div>
+
+                <c:if test="${sessionScope.user !=null}">
+                    <div class="alt-admin">
+                        <form id="admin${message.id}" method="post" action="">
+                            <input type="hidden" name="messageId" value="${message.id}">
+                            <button class="modify" messageid="${message.id}">修改留言</button>
+                            <button class="delete" messageid="${message.id}">删除留言</button>
+                        </form>
+                    </div>
+                </c:if>
             </div>
         </c:forEach>
     </div>
@@ -85,7 +72,7 @@
     <div class="container">
         <% if (null != request.getSession().getAttribute("user")) {%>
         <div id="fatie">
-            <a href="/addMessagePrompt.do">
+            <a href="<c:url value="/addmessage"/> ">
                 <button>点我留言</button>
             </a>
         </div>
@@ -117,4 +104,41 @@
     copy@慕课网
 </footer>
 </body>
+
+<script type="application/javascript">
+    $('.modify').click(
+        function () {
+            var messageId = $(this).attr("messageid");
+            $("#admin" + messageId).attr("action", "<c:url value="/message/admin/modify"/> ").submit();
+        }
+    )
+
+    $('.delete').click(
+        function () {
+            var messageId = $(this).attr("messageid");
+            $("#admin" + messageId).attr("action", "<c:url value="/message/admin/delete"/> ").submit();
+        }
+    )
+
+    function submitMessageForm(flag) {
+        if ('first' == flag) {
+            document.getElementById('page').value = 1;
+        } else if ('pre' == flag) {
+            var current = Number(document.getElementById('page').value);
+            if (current > 1) {
+                document.getElementById('page').value = current - 1;
+            }
+        } else if ('next' == flag) {
+            var current = Number(document.getElementById('page').value);
+            var last = Number(document.getElementById('last').value);
+            if (current < last) {
+                document.getElementById('page').value = current + 1;
+            }
+        } else if ('last' == flag) {
+            var last = Number(document.getElementById('last').value);
+            document.getElementById('page').value = last < 1 ? 1 : last;
+        }
+        document.getElementById('messageForm').submit();
+    }
+</script>
 </html>

@@ -5,13 +5,8 @@ import com.imooc.beans.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MessageDAOImplTest {
     MessageDAO messageDAO = new MessageDAOImpl();
@@ -49,8 +44,9 @@ class MessageDAOImplTest {
 
     @Test
     void getMessageById() {
-        List<Message> messages = messageDAO.getMessageById(2L,1, 5);
+        List<Message> messages = messageDAO.getMessages(2L,1, 5);
         Assertions.assertNotNull(messages);
         Assertions.assertEquals(4, messages.size());
     }
+
 }

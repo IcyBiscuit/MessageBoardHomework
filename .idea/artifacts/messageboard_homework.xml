@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="messageboard-homework:Web exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/messageboard_homework_Web_exploded</output-path>
+  <artifact type="exploded-war" name="messageboard-homework">
+    <output-path>$PROJECT_DIR$/out/artifacts/messageboard_homework</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="messageboard-homework/web/Web" />
       <element id="directory" name="WEB-INF">
@@ -15,6 +15,7 @@
           <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.11" />
           <element id="library" level="project" name="Maven: com.github.penggle:kaptcha:2.3.2" />
           <element id="library" level="project" name="Maven: com.jhlabs:filters:2.0.235-1" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.11" />
         </element>
       </element>
     </root>

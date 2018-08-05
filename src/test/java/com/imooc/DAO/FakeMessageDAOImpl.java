@@ -21,7 +21,7 @@ public class FakeMessageDAOImpl implements MessageDAO {
     }
 
     @Override
-    public List<Message> getMessageById(Long userId, int page, int pageSize) {
+    public List<Message> getMessages(Long userId, int page, int pageSize) {
         List<Message> messageList = new ArrayList<>();
         messageList.add(new Message());
         return messageList;
@@ -36,5 +36,20 @@ public class FakeMessageDAOImpl implements MessageDAO {
     @Override
     public int countMessages(Long id) {
         return 666;
+    }
+
+    @Override
+    public int updateMessage(Message message) {
+        return 0;
+    }
+
+    @Override
+    public int deleteMessage(Long id) {
+        return 0;
+    }
+
+    @Override
+    public Message getMessage(Long id) {
+        return null;
     }
 }

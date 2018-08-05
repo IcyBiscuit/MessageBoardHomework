@@ -5,6 +5,7 @@ import com.google.code.kaptcha.Constants;
 import com.imooc.beans.User;
 import com.imooc.service.UserService;
 import com.imooc.service.UserServiceImpl;
+import com.imooc.utils.EncryptUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,13 +24,14 @@ public class LoginVerifyServlet extends HttpServlet {
         if (idcode != null && !idcode.trim().equals("") && idcode.equalsIgnoreCase(kcode)) {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
+            String encryptedPassword = EncryptUtil.getEncryptedString(password);
 
             UserService userService = new UserServiceImpl();
-            User user = userService.login(username, password);
+            User user = userService.login(username, encryptedPassword);
 
             if (user != null) {
                 request.getSession().setAttribute("user", user);
-                response.sendRedirect(request.getContextPath()+"/message/listall");
+                response.sendRedirect(request.getContextPath() + "/message/listall");
             } else {
                 request.setAttribute("verifyerrmsg", "用户名或密码有误");
                 request.getRequestDispatcher("/WEB-INF/views/biz/login.jsp").forward(request, response);
@@ -40,8 +42,6 @@ public class LoginVerifyServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/views/biz/login.jsp").forward(request, response);
 
         }
-
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

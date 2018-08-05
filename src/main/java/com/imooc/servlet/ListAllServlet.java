@@ -39,7 +39,7 @@ public class ListAllServlet extends HttpServlet {
             }
         }
 
-        List<Message> messages = messageService.listMessage(page, pageSize);
+        List<Message> messages = messageService.listMessages(page, pageSize);
 
         int count = messageService.countMessage();
         int last = count % pageSize == 0 ? (count / pageSize) : ((count / pageSize) + 1);
