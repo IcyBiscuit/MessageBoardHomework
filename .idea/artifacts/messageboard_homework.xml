@@ -1,8 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="messageboard-homework">
+  <artifact type="war" name="messageboard-homework">
     <output-path>$PROJECT_DIR$/out/artifacts/messageboard_homework</output-path>
-    <root id="root">
-      <element id="javaee-facet-resources" facet="messageboard-homework/web/Web" />
+    <root id="archive" name="messageboard-homework.war">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="messageboard-homework" />
@@ -10,14 +9,15 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.12" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:2.6.0" />
-          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: com.mchange:c3p0:0.9.5.2" />
           <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.11" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: com.github.penggle:kaptcha:2.3.2" />
           <element id="library" level="project" name="Maven: com.jhlabs:filters:2.0.235-1" />
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.11" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="messageboard-homework/web/Web" />
     </root>
   </artifact>
 </component>
